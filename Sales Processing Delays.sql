@@ -1,4 +1,5 @@
 -- Lists all sales in the database since a specific date and time that have a processing delay of x hours.
+USE Task_PROD
 
 DECLARE @DateFrom date 
 DECLARE @ProcessingDelay int
