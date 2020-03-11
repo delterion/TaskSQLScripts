@@ -4,9 +4,9 @@ USE Task_PROD
 DECLARE @UpdateTime float
 
 -- Change these as required
-SET @UpdateTime = 60
+SET @UpdateTime = 240
 
 UPDATE TerminalSetupTable
   SET CUI = @UpdateTime
-WHERE CUI = 1440
+WHERE CUI = 60
 

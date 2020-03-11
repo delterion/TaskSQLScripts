@@ -4,7 +4,6 @@ DECLARE @MenuFlowSettingsID int
 
 SET @MenuFlowID  = 1132
 SET @MenuFlowDataID = (SELECT ID from TerminalMenuFlowData where MenuFlowID = @MenuFlowID)
-SET @MenuFlowSettingsID = (SELECT MenuFlowSettingsId from TerminalMenuFlowData where MenuFlowID = @MenuFlowID)
 
 SELECT * FROM TerminalMenuFlow where MenuFlowID = @MenuFlowID
 
@@ -17,4 +16,4 @@ select * from TerminalMenuFlowDataOnly where MenuFlowDataId = @MenuFlowDataID
 select * from TerminalMenuFlowDataOnlyFamilySettings where TMFDataId = @MenuFlowDataID
 
 -- ## List the settings for the part of the menu flow.
-select * from TerminalMenuFlowMenuSettings where id = @MenuFlowSettingsID
+select * from TerminalMenuFlowMenuSettings where TMFDataId = @MenuFlowDataID
