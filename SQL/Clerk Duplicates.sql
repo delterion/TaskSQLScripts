@@ -10,3 +10,19 @@ GROUP BY
     ClerkLogon
 HAVING 
     COUNT(*) > 1;
+
+SELECT 
+    --ClerkName, 
+    --ClerkSurname,
+    ClerkLogon, 
+    COUNT(*) occurrences
+FROM TerminalClerkTable
+WHERE PayrollIDNumber IS NOT NULL
+GROUP BY
+    ClerkName,
+    ClerkSurname,
+    ClerkLogon
+HAVING 
+    COUNT(*) > 1;
+
+
