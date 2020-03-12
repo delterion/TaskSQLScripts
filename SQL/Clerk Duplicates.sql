@@ -11,6 +11,7 @@ GROUP BY
 HAVING 
     COUNT(*) > 1;
 
+
 SELECT 
     --ClerkName, 
     --ClerkSurname,
