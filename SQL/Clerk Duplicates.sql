@@ -11,6 +11,7 @@ GROUP BY
 HAVING 
     COUNT(*) > 1;
 
+
 -- Finds duplicate staff members by matching names and logon
 SELECT 
     --ClerkName, 
