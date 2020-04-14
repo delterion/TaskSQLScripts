@@ -3,7 +3,7 @@
 --  CREATE table #terminalreport
 --   (terminalno int, LocationDescription nvarchar(50), TerminalName nvarchar(50))
 
-SELECT tlt.LocationDescription, tst.TerminalNo, tst.TerminalName into #terminalreport from TerminalSetupTable tst join TerminalLocationTable tlt on tst.LocationNo = tlt.LocationNo where tst.DisableSales = 0;
+SELECT tvt.VenueDescription, tlt.LocationDescription, tst.TerminalNo, tst.TerminalName into #terminalreport from TerminalSetupTable tst join TerminalLocationTable tlt on tst.LocationNo = tlt.LocationNo JOIN TerminalVenueTable tvt on tst.VenueNo = tvt.VenueNo where tst.DisableSales = 0;
 
 UPDATE #terminalreport
    SET TerminalName = 'Swing' 
@@ -25,8 +25,9 @@ UPDATE #terminalreport
    SET TerminalName = 'TMC7000' 
  where #terminalreport.TerminalName LIKE '%TMC7000%';
 
--- select * from #terminalreport
+-- Uncomment this to get a full list of terminals
+-- select * from #terminalreport order by TerminalNo
 
-select LocationDescription, TerminalName, COUNT(TerminalNo) from #terminalreport group by LocationDescription, TerminalName order by LocationDescription
+select VenueDescription, LocationDescription, TerminalName, COUNT(TerminalNo) as Total from #terminalreport group by VenueDescription, LocationDescription, TerminalName order by LocationDescription
 
 DROP TABLE #terminalreport;
