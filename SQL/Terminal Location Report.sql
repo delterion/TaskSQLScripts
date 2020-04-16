@@ -28,6 +28,6 @@ UPDATE #terminalreport
 -- Uncomment this to get a full list of terminals
 -- select * from #terminalreport order by TerminalNo
 
-select VenueDescription, LocationDescription, TerminalName, COUNT(TerminalNo) as Total from #terminalreport group by VenueDescription, LocationDescription, TerminalName order by LocationDescription
+select VenueDescription, LocationDescription, TerminalName, COUNT(TerminalNo) as Total from #terminalreport group by VenueDescription, LocationDescription, TerminalName order by VenueDescription, LocationDescription
 
 DROP TABLE #terminalreport;
