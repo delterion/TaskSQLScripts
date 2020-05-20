@@ -1,7 +1,18 @@
-﻿-- This script deletes all sales in the sales processing table where the termional number equals the setting below.
+﻿-- This script deletes all sales in the sales processing table where the terminal sales are disabled.
 
--- delete from TerminalSalesProcessTable where TerminalNo = 28321
+-- The first select is the summary of disabled sales in the db.
+-- The second select shows that they are deleted.
 
-use Task_PROD
-delete from TerminalSalesProcessTable
-  where TerminalNo in(28321, 28322, 28381)
+
+select tsp.terminalno, count(tsp.terminalno) from TerminalSalesProcessTable tsp
+    join TerminalSetupTable tst on tsp.TerminalNo = tst.TerminalNo
+    where tst.DisableSales = 1
+    GROUP by tsp.TerminalNo
+
+  delete from TerminalSalesProcessTable
+  where TerminalNo in(select tsp.terminalno from TerminalSalesProcessTable tsp join TerminalSetupTable tst on tsp.TerminalNo = tst.TerminalNo where tst.DisableSales = 1)
+
+ select tsp.terminalno, count(tsp.terminalno) from TerminalSalesProcessTable tsp
+      join TerminalSetupTable tst on tsp.TerminalNo = tst.TerminalNo
+      where tst.DisableSales = 1
+      GROUP by tsp.TerminalNo
