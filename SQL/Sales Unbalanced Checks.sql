@@ -58,7 +58,7 @@ set ROWCOUNT 0
 select TransactionID into #mytemp from TerminalSales where SaleDate > DATEADD(day,-30,GETDATE()) and SaleType in (0,8)
 
 set ROWCOUNT 1
-select @transactionid = transactionid from #mytemp
+select @transactionid = transactionid from #mytemp;
 
 while @@rowcount <> 0
   BEGIN
