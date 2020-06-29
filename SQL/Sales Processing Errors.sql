@@ -3,3 +3,4 @@ USE Task_PROD
 
 select * from TerminalSalesProcessTable
 where HasError = 1
+
