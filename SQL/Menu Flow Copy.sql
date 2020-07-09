@@ -1,15 +1,9 @@
-﻿
-/**
-INSERT INTO table2 (column1, column2, column3, ...)
-SELECT column1, column2, column3, ...
-FROM table1
-WHERE condition; 
-**/
+﻿-- This script copies the menu flows from one terminal to another
 
 DECLARE @terminalsource int
 DECLARE @terminaltarget int
-SET @terminalsource = 28396
-SET @terminaltarget = 28314
+SET @terminalsource = 28755
+SET @terminaltarget = 28708
 
 select * from TerminalMenuFlowSchedulesTerminals WHERE TerminalNo = @terminalsource
 
