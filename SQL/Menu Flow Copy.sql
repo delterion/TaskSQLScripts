@@ -2,10 +2,10 @@
 
 DECLARE @terminalsource int
 DECLARE @terminaltarget int
-SET @terminalsource = 28424
-SET @terminaltarget = 28404
+SET @terminalsource = 28423
+SET @terminaltarget = 28454
 
---delete from TerminalMenuFlowSchedulesTerminals WHERE TerminalNo = @terminalsource
+delete from TerminalMenuFlowSchedulesTerminals WHERE TerminalNo = @terminaltarget
 
 select * from TerminalMenuFlowSchedulesTerminals WHERE TerminalNo = @terminalsource
 
