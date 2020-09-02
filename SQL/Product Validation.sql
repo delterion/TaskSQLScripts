@@ -1,20 +1,15 @@
--- This scripts results are designed for exporting all products associated with a keypad.  There are some variables that need adjusting for each time you run it to ensure you are getting the correct results.
-
 use Task_PROD
-
 --Get customer no and legal entity
 declare @customerNo nvarchar(20)
 declare @legalEntity nvarchar(20)
 
--- @## Make sure this is retuning the correct location.
-select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%guardsman%' --'%morr%'
+select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%retail%' --'%morr%'
 
--- ## Make sure this is returning the correct keypad ID.  this is critical to the script.
 declare @keypad int
- --select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%guardsman%'
- select @keypad = KeyPadID from TerminalKeyPads where keypadID = 120
+ select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%retail%'
+ --select @keypad = KeyPadID from TerminalKeyPads where keypadID = 133
  select keypadname from TerminalKeyPads where keypadid= @keypad
---select KeyPadID, Keypadname from TerminalKeyPads where keypadname like '%guardsman%'
+--select KeyPadID, Keypadname from TerminalKeyPads where keypadname like '%mini%'
 
 declare @keys table(plu int)
 
@@ -82,7 +77,7 @@ inner join @familyIDs ff on ff.FID = f.FamilyID
 
 select k.plu, t.ProductID as TaskProductID,t.ProductDescription, t.ExternalProductID as ProductID, 
 @customerNo as MemberID, @legalEntity as CompanyName,  s.SizeTypeDescription as UnitOfMeasure,t.SizeQty as UnitQuanity, t.IsINstruction, t.IsNonDiminishing,
-NULL as SiteID, NULL as CustomerSiteID, NULL as ShippingWarehouseID, NULL as WarehouseLocationID, NULL as Errors
+NULL as SiteID, NULL as CustomerSiteID, NULL as ShippingWarehouseID, NULL as WarehouseLocationID, NULL as Errors, t.productsizeid, t.productstyleid, t.productcolourid
 from (select distinct plu from @keys) k 
 join TerminalProductTable t 
 on k.plu = t.PLU
