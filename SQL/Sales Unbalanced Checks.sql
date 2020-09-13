@@ -151,6 +151,11 @@ while @@rowcount <> 0
 		  SET @ignore = 'ignore'
 		END
 
+    IF @total IS NULL AND @items = 0 AND @quantity > 0
+		BEGIN
+		  SET @ignore = 'ignore'
+		END
+
 		IF @total = 0 AND @items IS NULL
 		BEGIN
 		  SET @ignore = 'ignore'
