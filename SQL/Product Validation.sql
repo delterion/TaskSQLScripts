@@ -4,13 +4,13 @@ use Task_PROD
 declare @customerNo nvarchar(20)
 declare @legalEntity nvarchar(20)
 
-select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%Huami Adelaide%' --'%morr%'
---select LocationDescription from TerminalLocationTable where LocationDescription LIKE '%Huami%'
+select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%Tower%' --'%morr%'
+--select LocationDescription from TerminalLocationTable where LocationDescription LIKE '%Central%'
 declare @keypad int
-select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%AD Huami%'
---select @keypad = KeyPadID from TerminalKeyPads where keypadID = 133
+--select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%Tower%'
+select @keypad = KeyPadID from TerminalKeyPads where keypadID = 48
 select keypadname from TerminalKeyPads where keypadid= @keypad
---select KeyPadID, Keypadname from TerminalKeyPads where keypadname like '%HUami%'
+--select KeyPadID, Keypadname from TerminalKeyPads where keypadname like '%Tower%'
 
 
 declare @keys table(id  int identity , plu nvarchar(100))
