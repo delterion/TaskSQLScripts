@@ -4,11 +4,20 @@ use Task_PROD
 declare @customerNo nvarchar(20)
 declare @legalEntity nvarchar(20)
 
-select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%Tower%' --'%morr%'
+/*  Use the section below to find the outlet and set the customer number
+The commented out row is for isolating the search
+*/
+
+select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%Lucky%' --'%morr%'
 --select LocationDescription from TerminalLocationTable where LocationDescription LIKE '%Central%'
+
+/*  
+The section below finds the keypad and displays it in the query window
+*/
+
 declare @keypad int
---select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%Tower%'
-select @keypad = KeyPadID from TerminalKeyPads where keypadID = 48
+select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%Lucky%'
+--select @keypad = KeyPadID from TerminalKeyPads where keypadID = 48
 select keypadname from TerminalKeyPads where keypadid= @keypad
 --select KeyPadID, Keypadname from TerminalKeyPads where keypadname like '%Tower%'
 
