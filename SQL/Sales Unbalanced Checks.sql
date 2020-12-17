@@ -68,7 +68,7 @@ set ROWCOUNT 0
 --select TransactionID into #mytemp from TerminalSales where TransactionID >= 2033463
 --select TransactionID into #mytemp from TerminalSales where SaleDate > '2020-10-20 00:00:00' and SaleType in (0,8) and VenueNo = 2
 select TransactionID into #mytemp from TerminalSales where SaleDate > DATEADD(day,-1,GETDATE()) and SaleType in (0,8)
---select TransactionID into #mytemp from TerminalSales where SaleDate > DATEADD(day,-30,GETDATE()) and SaleType in (0,8)
+--select TransactionID into #mytemp from TerminalSales where SaleDate > DATEADD(day,-60,GETDATE()) and SaleType in (0,8)
 
 set ROWCOUNT 1
 select @transactionid = transactionid from #mytemp;

@@ -8,18 +8,18 @@ declare @legalEntity nvarchar(20)
 The commented out row is for isolating the search
 */
 
-select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%EOS In%' --'%morr%'
---select LocationDescription from TerminalLocationTable where LocationDescription LIKE '%EOS%'
+select @customerNo = GLCode, @legalEntity = RIGHT(LocationCode, 4) from TerminalLocationTable where LocationDescription LIKE '%huami ad%' --'%morr%'
+--select LocationDescription from TerminalLocationTable where LocationDescription LIKE '%huami%'
 
 /*  
 The section below finds the keypad and displays it in the query window
 */
 
 declare @keypad int
-select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%SOL IRD%'
---select @keypad = KeyPadID from TerminalKeyPads where keypadID = 140
+--select @keypad = KeyPadID from TerminalKeyPads where keypadname LIKE '%Westward%'
+select @keypad = KeyPadID from TerminalKeyPads where keypadID = 144
 select keypadname from TerminalKeyPads where keypadid= @keypad
---select KeyPadID, Keypadname from TerminalKeyPads where keypadname like '%IRD%'
+--select KeyPadID, Keypadname from TerminalKeyPads where keypadname like '%huami%'
 
 
 declare @keys table(id  int identity , plu nvarchar(100))
